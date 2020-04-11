@@ -12,7 +12,7 @@ class AppController extends Controller
             return redirect()->route('index');
         }
 
-    	return view('tela_login');
+    	return view('usuarios.login');
     }
 
     function index(){

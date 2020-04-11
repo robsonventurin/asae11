@@ -14,7 +14,7 @@ class VendaController extends Controller
         }
 
         $cliente = Cliente::all();
-        return view('cadastrar_venda', [ "clientes" => $cliente]);
+        return view('vendas.cadastrar', [ "clientes" => $cliente]);
     }
 
     function telaAlterar($id) {
@@ -24,18 +24,18 @@ class VendaController extends Controller
 
         $cliente = Cliente::all();
         $v = Venda::find($id);
-        return view('alterar_vendas', [ "clientes" => $cliente, "venda" => $v]);
+        return view('vendas.alterar', [ "clientes" => $cliente, "venda" => $v]);
     }
 
     
     function telaListar() {        
         $lista = Venda::all();
-        return view('listar_vendas', [ "vendas" => $lista]);
+        return view('vendas.listar', [ "vendas" => $lista]);
     }
 
     function telaListarVendasPorCliente($id){
         $cliente = Cliente::find($id);
-        return view('listar_vendas', ["vendas" => $cliente->vendas, "cliente" => $cliente]);
+        return view('vendas.listar', ["vendas" => $cliente->vendas, "cliente" => $cliente]);
     }
 
     function adicionar(Request $req) {

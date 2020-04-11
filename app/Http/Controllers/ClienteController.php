@@ -13,7 +13,7 @@ class ClienteController extends Controller
         }
 
         $lista = $this->listaEstados();
-        return view('cadastrar_cliente', [ "estados" => $lista]);
+        return view('clientes.cadastrar', [ "estados" => $lista]);
     }
 
     function telaAlterar($id) {
@@ -23,12 +23,12 @@ class ClienteController extends Controller
         
         $lista = $this->listaEstados();
         $c = Cliente::find($id);
-        return view('alterar_cliente', [ "estados" => $lista, "cliente" => $c]);
+        return view('clientes.alterar', [ "estados" => $lista, "cliente" => $c]);
     }
 
     function telaListar() {
         $lista = Cliente::all();
-        return view('listar_clientes', [ "clientes" => $lista]);
+        return view('clientes.listar', [ "clientes" => $lista]);
     }
 
     function listaEstados() {

@@ -12,7 +12,7 @@ class UsuarioController extends Controller
             return redirect()->route('tela_login');
         }
 
-    	return view("cadastrar_usuario");
+    	return view("usuarios.cadastrar");
     }
 
     function telaAlteracao($id){
@@ -22,7 +22,12 @@ class UsuarioController extends Controller
         
         $usuario = Usuario::find($id);
 
-        return view("alterar_usuario", [ "usuario" => $usuario ]);
+        return view("usuarios.alterar", [ "usuario" => $usuario ]);
+    }
+
+    function telaListar() {
+        $usuarios = Usuario::all();
+        return view("usuarios.listar", [ "us" => $usuarios ]);
     }
 
     function adicionar(Request $req){
@@ -70,10 +75,5 @@ class UsuarioController extends Controller
         }
 
         return view("resultado", [ "mensagem" => $msg]);
-    }
-
-    function listar() {
-        $usuarios = Usuario::all();
-        return view("listar_usuarios", [ "us" => $usuarios ]);
     }
 }
